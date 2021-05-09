@@ -26,11 +26,7 @@ STACK* novo_stack(int valor) {
 }
 
 int is_folha(STACK* stack) {
-
-	if(stack->menorq_1 == NULL && stack->menorq_2 == NULL) {
-		return 1;
-	}
-	return 0;
+	return (stack->menorq_1 == NULL && stack->menorq_2 == NULL) ? 1 : 0;
 }
 
 STACK* aloca_chave(STACK* stack, int valor) {
@@ -108,11 +104,7 @@ STACK* aloca_chave(STACK* stack, int valor) {
 }
 
 int is_overflow(STACK* stack) {
-
-	if(stack->chave3 != 0) {
-		return 1;
-	}
-	return 0;
+	return stack->chave3 != 0 ? 1 : 0;
 }
 
 STACK* split_menor(STACK* stack) {
@@ -168,15 +160,16 @@ STACK* overflow_intermediario(STACK* stack) {
 		stack->ant->menorq_3 = stack->ant->menorq_2;
 		stack->ant->chave2 = stack->ant->chave1;
 
-		stack->ant->chave1 = stack->chave2;
 		stack->ant->menorq_2 = stack_maior;
+		stack->ant->chave1 = stack->chave2;
+
 		return stack_menor;
 	}
 	
 	if(!stack->ant->chave2) {
 
-		stack->ant->chave2 = stack->chave2;
 		stack->ant->menorq_3 = stack_maior;
+		stack->ant->chave2 = stack->chave2;
 
 		return stack_menor;
 	}
@@ -186,8 +179,9 @@ STACK* overflow_intermediario(STACK* stack) {
 		stack->ant->maiorq_3 = stack->ant->menorq_3;
 		stack->ant->chave3 = stack->ant->chave2;
 
-		stack->ant->chave2 = stack->chave2;
 		stack->ant->menorq_3 = stack_maior;
+		stack->ant->chave2 = stack->chave2;
+
 		return stack_menor;
 	}
 

@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "arvore-b.h"
+#include "arvore-b-remocao.h"
 
 int menu() {
 
 	int resp;
 
 	system("cls");
-	printf("[1] - Inserir\t[2] - Imprimir\n");
+	printf("[1] - Inserir\t[3] - Remover\n");
+	printf("[2] - Imprimir\n");
 	printf("[0] - Sair\tOpcao: ");
 	scanf("%d", &resp);
 	system("cls");
@@ -44,6 +46,16 @@ int main() {
 			case 2: {
 				imprime_stack_crescente(stack);
 				printf("\n");
+				break;
+			}
+			case 3: {
+
+				int valor;
+
+				printf("Valor a ser removido: ");
+				scanf("%d", &valor);
+
+				stack = remove_chave(stack, valor);
 				break;
 			}
 			case 0: {

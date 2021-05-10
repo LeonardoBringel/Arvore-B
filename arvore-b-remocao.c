@@ -29,7 +29,7 @@ STACK* remove_chave(STACK* stack, int valor) {
 	} else {
 
 		if(valor == stack->chave1 || valor == stack->chave2) {
-			printf("\nValor encontrado, mas nao pode ser removido\n");
+			printf("\nValor encontrado, mas nao pode ser removido ainda\n");
 		} else if(valor < stack->chave1) {
 			stack->menorq_1 = remove_chave(stack->menorq_1, valor);
 		} else if(valor < stack->chave2 || stack->chave2 == 0) {

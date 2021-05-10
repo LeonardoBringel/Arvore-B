@@ -46,7 +46,7 @@ STACK* aloca_chave(STACK* stack, int valor) {
 		if(valor < stack->chave1) {
 			
 			#if DEBUG
-			printf("\nVALOR < CHAVE1");
+			printf("\nVALOR < CHAVE1\n");
 			#endif
 			stack->chave3 = stack->chave2;
 			stack->chave2 = stack->chave1;
@@ -54,20 +54,20 @@ STACK* aloca_chave(STACK* stack, int valor) {
 		} else if(!stack->chave2) {
 
 			#if DEBUG
-			printf("\nVALOR = CHAVE2");
+			printf("\nVALOR = CHAVE2\n");
 			#endif
 			stack->chave2 = valor;
 		} else if(valor < stack->chave2) {
 
 			#if DEBUG
-			printf("\nVALOR < CHAVE2");
+			printf("\nVALOR < CHAVE2\n");
 			#endif
 			stack->chave3 = stack->chave2;
 			stack->chave2 = valor;
 		} else {
 
 			#if DEBUG
-			printf("\nVALOR = CHAVE3");
+			printf("\nVALOR = CHAVE3\n");
 			#endif
 			stack->chave3 = valor;
 		}
@@ -79,19 +79,19 @@ STACK* aloca_chave(STACK* stack, int valor) {
 		if(valor < stack->chave1) {
 
 			#if DEBUG
-			printf("\nVALOR -> MENORQ_1");
+			printf("\nVALOR -> MENORQ_1\n");
 			#endif
 			stack->menorq_1 = aloca_chave(stack->menorq_1, valor);
 		} else if(valor < stack->chave2 || !stack->chave2) {
 
 			#if DEBUG
-			printf("\nVALOR -> MENORQ_2");
+			printf("\nVALOR -> MENORQ_2\n");
 			#endif
 			stack->menorq_2 = aloca_chave(stack->menorq_2, valor);
 		} else {
 
 			#if DEBUG
-			printf("\nVALOR -> MENORQ_3");
+			printf("\nVALOR -> MENORQ_3\n");
 			#endif
 			stack->menorq_3 = aloca_chave(stack->menorq_3, valor);
 		}

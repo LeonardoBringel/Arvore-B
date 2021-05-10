@@ -25,10 +25,12 @@ STACK* inserir(STACK* stack) {
 		printf("Insira um valor (diferente de 0): ");
 		scanf("%d", &valor);
 
-		stack = aloca_chave(stack, valor);
+		if(valor != 0) {
+			stack = aloca_chave(stack, valor);
 
-		printf("\nDeseja inserir outro? <1/0>: ");
-		scanf("%d", &valor);
+			printf("\nDeseja inserir outro? <1/0>: ");
+			scanf("%d", &valor);
+		}
 	} while(valor != 0);
 	return stack;
 }

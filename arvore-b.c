@@ -219,7 +219,31 @@ void imprime_stack_crescente(STACK* stack) {
 		imprime_stack_crescente(stack->menorq_2);
 		imprime_valor(stack->chave2);
 		imprime_stack_crescente(stack->menorq_3);
+
+		#if DEBUG
 		imprime_valor(stack->chave3);
 		imprime_stack_crescente(stack->maiorq_3);
+		#endif
 	}
+}
+
+int busca_valor(STACK* stack, int valor) {
+
+	if(valor == stack->chave1) {
+		return stack->chave1;
+	} else if(valor == stack->chave2) {
+		return stack->chave2;
+	}
+
+	if(!is_folha(stack)) {
+
+		if(valor < stack->chave1) {
+			return busca_valor(stack->menorq_1, valor);
+		} else if(valor < stack->chave2 || !stack->chave2) {
+			return busca_valor(stack->menorq_2, valor);
+		} else if(stack->menorq_3) {
+			return busca_valor(stack->menorq_3, valor);
+		}
+	}
+	return 0;
 }

@@ -10,3 +10,7 @@ arvore-b.o: arvore-b.c arvore-b.h
 
 arvore-b-remocao.o: arvore-b-remocao.c arvore-b-remocao.h
 	gcc -c arvore-b-remocao.c
+
+clean:
+	del *.o
+	del *.exe

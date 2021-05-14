@@ -9,7 +9,7 @@ int menu() {
 
 	system("cls");
 	printf("[1] - Inserir\t[3] - Remover\n");
-	printf("[2] - Imprimir\n");
+	printf("[2] - Imprimir\t[4] - Buscar\n");
 	printf("[0] - Sair\tOpcao: ");
 	scanf("%d", &resp);
 	system("cls");
@@ -35,6 +35,40 @@ STACK* inserir(STACK* stack) {
 	return stack;
 }
 
+STACK* remover(STACK* stack) {
+
+	int valor;
+	do {
+		system("cls");
+		printf("Valor a ser removido: ");
+		scanf("%d", &valor);
+
+		if(valor != 0) {
+			stack = remove_chave(stack, valor);
+
+			printf("\nDeseja remover outro? <1/0>: ");
+			scanf("%d", &valor);
+		}
+	} while(valor != 0 && stack);
+	return stack;
+}
+
+void buscar(STACK* stack) {
+
+	int valor;
+	do {
+		system("cls");
+		printf("Valor a ser procurado: ");
+		scanf("%d", &valor);
+
+		valor = busca_valor(stack, valor);
+		valor ? printf("\n%d\n", valor) : printf("\nValor nao encontrado\n");
+
+		printf("\nDeseja buscar outro? <1/0>: ");
+		scanf("%d", &valor);
+	} while(valor != 0);
+}
+
 int main() {
 
 	STACK* stack = NULL;
@@ -46,18 +80,31 @@ int main() {
 				break;
 			}
 			case 2: {
+
+				if(!stack) {
+					printf("Arvore vazia\n");
+					break;
+				}
 				imprime_stack_crescente(stack);
 				printf("\n");
 				break;
 			}
 			case 3: {
+				
+				if(!stack) {
+					printf("Arvore vazia\n");
+					break;
+				}
+				stack = remover(stack);
+				break;
+			}
+			case 4: {
 
-				int valor;
-
-				printf("Valor a ser removido: ");
-				scanf("%d", &valor);
-
-				stack = remove_chave(stack, valor);
+				if(!stack) {
+					printf("Arvore vazia\n");
+					break;
+				}
+				buscar(stack);
 				break;
 			}
 			case 0: {

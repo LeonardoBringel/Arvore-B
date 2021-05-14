@@ -34,4 +34,6 @@ STACK* overflow(STACK* stack);
 void imprime_valor(int valor);
 void imprime_stack_crescente(STACK* stack);
 
+int busca_valor(STACK* stack, int valor);
+
 #endif
